@@ -39,7 +39,7 @@ test('check - A user over 18 can give Consent', () => {
 })
 
 test('check - revokeConsent correctly revokes consent', () => {
-  processor.checkAge(user, 30)
+  processor.checkAge(user, 32)
   expect(user.consentGiven).toBeTruthy()
   processor.revokeConsent(user)
   expect(user.consentGiven).toBeFalsy()
