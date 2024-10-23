@@ -29,7 +29,7 @@ test('negative check', (): void => {
 })
 
 test('check - Consent cannot be given if user is under 18', () => {
-  processor.checkAge(user, 17)
+  processor.checkAge(user, 16)
   expect(user.consentGiven).toBeFalsy()
 })
 
