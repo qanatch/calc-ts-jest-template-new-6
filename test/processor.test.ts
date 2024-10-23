@@ -27,3 +27,20 @@ test('check processor verify', (): void => {
 test('negative check', (): void => {
   expect(processor.checkConsent(user)).toBeFalsy()
 })
+
+test('check - Consent cannot be given if user is under 18', () => {
+  processor.checkAge(user, 17)
+  expect(user.consentGiven).toBeFalsy()
+})
+
+test('check - A user over 18 can give Consent', () => {
+  processor.checkAge(user, 25)
+  expect(user.consentGiven).toBeTruthy()
+})
+
+test('check - revokeConsent correctly revokes consent', () => {
+  processor.checkAge(user, 30)
+  expect(user.consentGiven).toBeTruthy()
+  processor.revokeConsent(user)
+  expect(user.consentGiven).toBeFalsy()
+})
